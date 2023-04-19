@@ -246,12 +246,12 @@ h2 {
 }
 
 .body_comments {
-  color: #fff;
   border-left: 4px solid #35a9a3; /* Ширина, цвет и вид линии */
-  padding: 10px; /* Расстояние от линии до текста */
+  padding: 10px 10px 10px 10px; /* Расстояние от линии до текста */
   background: rgba(0, 255, 255, 0.0588235294); /* Цвет фона */
   color: #fff; /* Цвет текста */
-  width: 30vw;
+  word-break: break-all;
+  width: 270px;
 }
 
 .knopka {
@@ -271,4 +271,9 @@ h2 {
 
 .button_sending:active {
   box-shadow: 2px 2px 5px #fc894d;
+}
+
+img {
+  width: 50%; /* Ширина изображений */
+  height: 100%; /* Высота изображении */
 }/*# sourceMappingURL=app.css.map */
