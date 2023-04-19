@@ -1,0 +1,275 @@
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height: 1.5;
+	font-size: 1em;
+}
+
+body {
+	background-color: #0a0a0a;
+	width: 1200px;
+}
+
+::-moz-placeholder {
+	color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+	color: #cbd0d5;
+}
+
+::placeholder {
+	color: #cbd0d5;
+}
+
+html::after {
+	content: "";
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height: 3px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.container {
+	width: 100%;
+	max-width: 1200px;
+	padding: 10px 0px 0px 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* flex-контейнер */
+.row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: nowrap;
+	margin-right: -15px;
+	margin-left: -15px;
+	height: 700px;
+}
+
+/* общие настройки для flex-элементов */
+.col {
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.col__Chat_Block {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.comments_service_first_title {
+	color: azure;
+}
+
+.leave_your_comment_title {
+	color: #73e0e5;
+}
+.enter_your_full_name {
+	display: flex;
+	flex-direction: column;
+	color: #cbd0d5;
+}
+
+.block_fio,
+.block_avatar {
+	padding: 1% 0% 0% 0%;
+}
+
+.enter_your_avatar_link {
+	display: flex;
+	flex-direction: column;
+	color: #cbd0d5;
+}
+
+input {
+	background: transparent;
+	border-bottom: 2px solid #333;
+	outline: none;
+	font-size: 1rem;
+	padding-bottom: 5px;
+	border-radius: 7px;
+	width: 645px;
+	border: 2px solid #45e7dfb7;
+	font-family: inherit;
+	line-height: inherit;
+	color: #ffffff;
+	min-width: 12em;
+	margin: 11px 0px 0px 0px;
+}
+
+input:focus {
+	border-color: #00ffff;
+	box-shadow: 0 0 20px #00ffff;
+}
+
+input:focus ~ label:before,
+input:focus ~ label:after {
+	animation: 2s neon linear infinite;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 9px solid #00ffff;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+input:focus ~ label:before {
+	transform: rotate(45deg);
+	border-top: none;
+	border-right: none;
+}
+
+input:focus ~ label:after {
+	transform: rotate(-45deg);
+	border-top: none;
+	border-left: none;
+}
+
+@keyframes neon {
+	0% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+	50% {
+		filter: blur(20px);
+		opacity: 0.8;
+	}
+	100% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+}
+
+.comment_block {
+	padding: 12px 0px 0px 0px;
+}
+.text_leave_a_comment {
+	color: #cbd0d5;
+}
+.comment_input_field {
+	display: inline-block;
+	height: 100px;
+	padding: 5px;
+	overflow: hidden;
+	overflow-y: scroll;
+	width: 640px;
+}
+
+.comment_input_field::-webkit-scrollbar {
+	width: 8px;
+}
+.scrollable {
+	max-height: 300px; /* Установить максимальную высоту элемента /
+	overflow-y: scroll; / Оставить вертикальный скрол /
+	overflow-x: hidden; / Скрыть горизонтальный скрол */
+}
+.comment_input_field::-webkit-scrollbar-track {
+	background-color: #6beeff00;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #66f5ff;
+	height: 8px;
+}
+
+textarea {
+	background: transparent;
+	border-bottom: 2px solid #333;
+	outline: none;
+	font-size: 1rem;
+	color: #fff;
+	border-radius: 7px;
+	border: 2px solid #45e7dfb7;
+	resize: none;
+}
+
+textarea:focus {
+	border-color: #00ffff;
+	box-shadow: 0 0 20px #00ffff;
+}
+
+textarea:focus ~ label:before,
+textarea:focus ~ label:after {
+	animation: 2s neon linear infinite;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 9px solid #00ffff;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+textarea:focus ~ label:before {
+	transform: rotate(45deg);
+	border-top: none;
+	border-right: none;
+}
+
+textarea:focus ~ label:after {
+	transform: rotate(-45deg);
+	border-top: none;
+	border-left: none;
+}
+
+@keyframes neon {
+	0% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+	50% {
+		filter: blur(20px);
+		opacity: 0.8;
+	}
+	100% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+}
+
+h2 {
+	color: azure;
+}
+
+.body_comments {
+	color: #fff;
+	border-left: 4px solid #35a9a3; /* Ширина, цвет и вид линии */
+	padding: 10px; /* Расстояние от линии до текста */
+	background: #00ffff0f; /* Цвет фона */
+	color: #fff; /* Цвет текста */
+	width: 30vw;
+}
+.knopka {
+	margin: 48px 0px 0px 0px;
+}
+
+.button_sending {
+	width: 10em;
+	height: 5ex;
+	background-image: linear-gradient(135deg, #10abff 40%, #1beabd);
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.button_sending:active {
+	box-shadow: 2px 2px 5px #fc894d;
+}
