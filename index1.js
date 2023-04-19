@@ -23,7 +23,7 @@ sendButton.addEventListener("click", () => {
 	const avatar = Avatarmessage.value;
 	const message = messageInput.value;
 	const messageElement = document.createElement("div");
-	messageElement.textContent = (message, avatar, name);
+	messageElement.textContent = name + " " + avatar + " " + message;
 	messagesDiv.appendChild(messageElement);
 	messageInput.value = "";
 	Avatarmessage.value = "";
