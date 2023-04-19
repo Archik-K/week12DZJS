@@ -1,40 +1,31 @@
 function transformName() {
 	const nameInput = document.getElementById("name");
-	let name = nameInput.value.trim(); // Удаляем пробелы с начала и конца строки
-	name =
-		name.charAt(0).toUpperCase() +
-		name.slice(1).WordUtils.capitalizeFully(name); // Переводим первую букву в верхний регистр, остальные - в нижний
-	nameInput.value = name; // Обновляем значение поля ввода
+	let name = nameInput.value.trim().toLowerCase();
+	// Используем метод capitalize(), чтобы привести первую букву имени к верхнему регистру:
+	name = capitalize(name);
+	return name;
 }
 
-function addMessage() {
-	let messageInput = document.getElementById("name");
-	let messageText = messageInput.value;
+function capitalize(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+/*   В этой функцие `transformName()`, мы добавляем вспомогательную функцию `capitalize()`, 
+  которая занимается приведением первой буквы строки к верхнему регистру. Затем мы используем `capitalize()` 
+  для преобразования первой буквы имени в верхний регистр. */
 
-	let messageAvatar = document.getElementById("avatar");
-	let avatarInput = messageAvatar.value;
-
-	let messagesOfAllFields = document.getElementById("message");
-	let messagesFields = messagesOfAllFields.value;
-	// Проверка на спам
-	messageText = checkSpam(messageText);
-	avatarInput = checkSpam(messageAvatar);
-	messagesFields = checkSpam(messagesOfAllFields);
-
-	let messageElement = document.createElement("div");
-	messageElement.innerText = messageText;
-	let messageList = document.getElementById("messages");
-	messageList.appendChild(messageElement);
+const nameInput = document.getElementById("name");
+const Avatarmessage = document.getElementById("avatar");
+const messagesDiv = document.getElementById("messages");
+const messageInput = document.getElementById("message-input");
+const sendButton = document.getElementById("send-button");
+sendButton.addEventListener("click", () => {
+	const name = nameInput.value;
+	const avatar = Avatarmessage.value;
+	const message = messageInput.value;
+	const messageElement = document.createElement("div");
+	messageElement.textContent = (message, avatar, name);
+	messagesDiv.appendChild(messageElement);
 	messageInput.value = "";
-	messageAvatar.value = "";
-	messagesOfAllFields.value = "";
-}
-
-function checkSpam(str) {
-	// Преобразование строки к нижнему регистру
-	str = str.toLowerCase();
-	// Замена 'viagra' или 'xxx' на '***'
-	str = str.replace(/viagra/g, "***");
-	str = str.replace(/xxx/g, "***");
-	return str;
-}
+	Avatarmessage.value = "";
+	nameInput.value = "";
+});
