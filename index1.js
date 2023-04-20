@@ -8,7 +8,7 @@ const sendButton = document.getElementById("send-button");
   которая занимается приведением первой буквы строки к верхнему регистру. Затем используем `capitalize()` 
   для преобразования первой буквы имени в верхний регистр. */
 function transformName(name) {
-	name = name.trim().toLowerCase();
+	name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 	name = capitalize(name);
 	return name;
 }
@@ -31,18 +31,22 @@ function checkSpam(str) {
 /* Здесь использовали регулярное выражение `/viagra|XXX/gi` для поиска всех вхождений "viagra" и "XXX" в строке `str` с учётом регистра. 
 Метод `replace()` заменяет найденные вхождения на "***" и возвращает новую строку. */
 
-sendButton.addEventListener("click", () => {
-	const name = transformName(nameInput.value);
-	const avatar = Avatarmessage.value;
-	/* 	const message = messageInput.value; */
-	const messageElement = document.createElement("div");
-	const message = checkSpam(messageInput.value);
-	messageElement.innerHTML = `<img src="${avatar}" alt='изображение аватара'><p> ${name}<br>${message}</p>`;
-	messagesDiv.appendChild(messageElement);
-	messageInput.value = "";
-	Avatarmessage.value = "";
-	nameInput.value = "";
-});
+sendButton.addEventListener(
+	"click",
+	() => {
+		const name = transformName(nameInput.value);
+		const avatar = Avatarmessage.value;
+		/* 	const message = messageInput.value; */
+		const messageElement = document.createElement("div");
+		const message = checkSpam(messageInput.value);
+		messageElement.innerHTML = `<img src="${avatar}" alt='изображение аватара'><p> ${name}<br>${message}</p>`;
+		messagesDiv.appendChild(messageElement);
+		messageInput.value = "";
+		Avatarmessage.value = "";
+		nameInput.value = "";
+	},
+	{ once: true } //кнопка срабатывает один раз
+);
 /* Этот код создает пять переменных, которые содержат ссылки на HTML-элементы: 
 'nameInput' - для поля ввода ФИО, 
 'Avatarmessage' - для поля ввода ссылки на картинку, 
