@@ -1,51 +1,49 @@
 //элементы формы
-const nameInput = document.getElementById("nameFIO");
-const Avatarmessage = document.getElementById("avatar");
-const messageInput = document.getElementById("message-input");
-const messagesDiv = document.getElementById("messages");
-const sendButton = document.getElementById("send-button");
-/*   В этой функции `transformName()`, добавляем вспомогательную функцию `capitalize()`, 
-  которая занимается приведением первой буквы строки к верхнему регистру. Затем используем `capitalize()` 
-  для преобразования первой буквы имени в верхний регистр. */
+const nameInput = document.getElementById("nameFIO"); //получаем элемент с id "nameFIO" (поле ввода имени пользователя)
+const Avatarmessage = document.getElementById("avatar"); //получаем элемент с id "avatar" (поле ввода ссылки на аватар пользователя)
+const messageInput = document.getElementById("message-input"); //получаем элемент с id "message-input" (поле ввода комментария пользователя)
+const messagesDiv = document.getElementById("messages"); //получаем элемент с id "messages" (контейнер для всех сообщений чата)
+const sendButton = document.getElementById("send-button"); //получаем элемент с id "send-button" (кнопка "Отправить")
+
+// Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
 function transformName(name) {
 	name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
-	name = capitalize(name);
+	name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 	return name;
 }
+
+// Вспомогательная функция, которая приводит первую букву слова к верхнему регистру
 function capitalize(str) {
-	let res = "";
-	let words = str.split(/[ ]+/);
+	let res = ""; // создаём переменную с пустой строкой
+	let words = str.split(/[ ]+/); //разбиваем строку на отдельные слова
 	let word;
-	for (word of words) // перебираем вводимые слова в переменной
-		res = res + word.charAt(0).toUpperCase() + word.slice(1) + " ";
-	return res;
+	for (word of words) //перебираем все слова в переменной words
+		res = res + word.charAt(0).toUpperCase() + word.slice(1) + " "; //приводим первую букву каждого слова к верхнему регистру и объединяем все слова в одну строку
+	return res; //возвращаем новую строку с приведенными к верхнему регистру первыми буквами всех слов
 }
 
-/* Для реализации функции `checkSpam(str)` можно использовать метод `replace()` для замены всех вхождений "viagra" и "XXX" на "***": */
-
+// Функция проверки на спам: замена всех вхождений "viagra" и "XXX" на ***
 function checkSpam(str) {
-	let spamtext = str.toLowerCase(); //перевели в нижний регистр
-	return spamtext.replace(/viagra|xxx/gi, "***");
+	let spamtext = str.toLowerCase(); //переводим все символы строки в нижний регистр
+	return spamtext.replace(/viagra|xxx/gi, "***"); //заменяем все вхождения "viagra" и "XXX" на "*" и возвращаем новую строку
 }
 
-/* Здесь использовали регулярное выражение `/viagra|XXX/gi` для поиска всех вхождений "viagra" и "XXX" в строке `str` с учётом регистра. 
-Метод `replace()` заменяет найденные вхождения на "***" и возвращает новую строку. */
-
+// Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener(
 	"click",
 	() => {
-		const name = transformName(nameInput.value);
-		const avatar = Avatarmessage.value;
-		/* 	const message = messageInput.value; */
-		const messageElement = document.createElement("div");
-		const message = checkSpam(messageInput.value);
-		messageElement.innerHTML = `<img src="${avatar}" alt='изображение аватара'><p> ${name}<br>${message}</p>`;
-		messagesDiv.appendChild(messageElement);
-		messageInput.value = "";
-		Avatarmessage.value = "";
-		nameInput.value = "";
+		// Преобразование имени пользователя и получение аватара и сообщения из формы
+		const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
+		const avatar = Avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
+		const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
+		const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
+		messageElement.innerHTML = `<img src="${avatar}" alt='изображение аватара'><p> ${name}<br>${message}</p>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
+		messagesDiv.appendChild(messageElement); //добавляем созданный div-элемент в контейнер для всех сообщений чата
+		messageInput.value = ""; //очищаем поле ввода сообщения
+		Avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
+		nameInput.value = ""; //очищаем поле ввода имя пользователя
 	},
-	{ once: true } //кнопка срабатывает один раз
+	{ once: true } //Событие "click" на кнопке отправки сообщения срабатывает только один раз
 );
 /* Этот код создает пять переменных, которые содержат ссылки на HTML-элементы: 
 'nameInput' - для поля ввода ФИО, 
