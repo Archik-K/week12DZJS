@@ -1,6 +1,6 @@
 //элементы формы
 const nameInput = document.getElementById("nameFIO"); //получаем элемент с id "nameFIO" (поле ввода имени пользователя)
-const Avatarmessage = document.getElementById("avatar"); //получаем элемент с id "avatar" (поле ввода ссылки на аватар пользователя)
+const avatarmessage = document.getElementById("avatar"); //получаем элемент с id "avatar" (поле ввода ссылки на аватар пользователя)
 const messageInput = document.getElementById("message-input"); //получаем элемент с id "message-input" (поле ввода комментария пользователя)
 const messagesDiv = document.getElementById("messages"); //получаем элемент с id "messages" (контейнер для всех сообщений чата)
 const sendButton = document.getElementById("send-button"); //получаем элемент с id "send-button" (кнопка "Отправить")
@@ -34,13 +34,13 @@ sendButton.addEventListener(
 	() => {
 		// Преобразование имени пользователя и получение аватара и сообщения из формы
 		const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
-		const avatar = Avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
+		const avatar = avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
 		const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
 		const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
 		messageElement.innerHTML = `<img src="${avatar}" alt='изображение аватара'><p> ${name}<br>${message}</p>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
 		messagesDiv.appendChild(messageElement); //добавляем созданный div-элемент в контейнер для всех сообщений чата
 		messageInput.value = ""; //очищаем поле ввода сообщения
-		Avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
+		avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
 		nameInput.value = ""; //очищаем поле ввода имя пользователя
 	},
 	{ once: true } //Событие "click" на кнопке отправки сообщения срабатывает только один раз
