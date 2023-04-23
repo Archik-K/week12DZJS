@@ -98,12 +98,12 @@ input {
 	padding-bottom: 5px;
 	border-radius: 7px;
 	width: 645px;
+	height: 23px;
 	border: 2px solid #45e7dfb7;
 	font-family: inherit;
 	line-height: inherit;
 	color: #ffffff;
 	min-width: 12em;
-	margin: 11px 0px 0px 0px;
 }
 
 input:focus {
@@ -153,7 +153,7 @@ input:focus ~ label:after {
 }
 
 .comment_block {
-	padding: 12px 0px 0px 0px;
+	padding: 12px 0 0 0;
 }
 
 .text_leave_a_comment {
@@ -258,7 +258,7 @@ h2 {
 	width: 270px;
 }
 .knopka {
-	margin: 48px 0px 0px 0px;
+	margin: 48px 0 0 0;
 }
 
 .button_sending {
@@ -279,4 +279,13 @@ h2 {
 img {
 	width: 50%; /* Ширина изображений */
 	height: 100%; /* Высота изображении */
+}
+
+.span_text_fio,
+.span_text_avatar {
+	margin: 14px 0 0 0;
+}
+
+#text {
+	margin: 14px 0 0 0;
 }
